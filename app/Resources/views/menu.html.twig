@@ -1,0 +1,102 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col s2">
+                    <a id="logo" href="#" class="valign-wrapper">
+                        <img src="{{ asset('logo.png') }}" alt="" class="responsive-img container">
+                    </a>
+                </div>
+                <div class="row">
+                    <h5 class="center-align col s8 l8">Bienvenue !</h5>
+                    <a href="{{ path('accueil') }}"
+                       class="waves-effect waves-light btn light">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <br><br><br><br>
+    <div class="section no-pad-bot container">
+        <div class="row center">
+            <div class="row">
+                <div class="fonctionnalité">
+                    <div class="col s12 m12 l6 xl6 ">
+                        <div class="card horizontal">
+                            <i class="large material-icons">account_circle</i>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p>Consulter votre dossier étudiant (notes, adresse...)</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Dossier Etudiant</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fonctionnalité">
+                    <div class="col s12 m12 l6 xl6 ">
+                        <div class="card horizontal">
+                            <i class="large material-icons">school</i>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p>Rechercher des professeurs et des étudiants de l'université</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="{{ path('annuaire_recherche') }}">Annuaire</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br><br>
+        <div class="row center">
+            <div class="row">
+                <div class="fonctionnalité">
+                    <div class="col s12 m12 l6 xl6 ">
+                        <div class="card horizontal">
+                            <i class="large material-icons">bookmark</i>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p>S'inscrire et choisir ses options et ses sports dans son cursus</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Réservation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fonctionnalité">
+                    <div class="col s12 m12 l6 xl6 ">
+                        <div class="card horizontal">
+                            <i class="large material-icons">forum</i>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p>Poser ou trouver des réponses à vos questions</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">FAQ ou Forum</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+{% endblock %}
