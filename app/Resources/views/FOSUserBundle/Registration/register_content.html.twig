@@ -1,8 +1,95 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<br>
+<div class="section no-pad-bot">
+    <div class="row center">
+        <div class="col s7">
+            <div id="desc" class="container">
+                <h3 class="header light" id="titre">Bienvenue sur BlueWings ! </h3>
+                <br>
+                <div class="">Nous sommmes fiers de vous présenter le premier site exclusivement destiné à la
+                    location
+                    de
+                    wingsuits entre particuliers.
+                    Pour un service de qualité et une attention spéciale sur la sécurité, BlueWings a pour objectif
+                    de
+                    vous permettre
+                    de vous faire plaisir sans vous ruiner. Le principe est simple. A partir de votre compte membre,
+                    publiez une annonce sur le site de votre combinaison
+                    de wingsuit, en spécifiant notamment la taille, et le niveau auquel il correspond. Lorsque votre
+                    produit
+                    aura trouvé un interessé, ce dernier n'aura qu'à se déplacer dans le club où vous aurez déposé
+                    le
+                    produit
+                    pour l'utiliser le temps d'une session de sauts et le remettre ensuite au club.
+                </div>
+            </div>
+        </div>
+
+        <div class="col s5">
+            <h5 class="light">Inscription</h5>
+
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),
+                'attr': {'class': 'fos_user_registration_register'}}) }}
+            {{ form_widget(form) }}
+
+            <form id="myform" action="accueil">
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="nom" type="text" class="validate">
+                        <label for="nom">Nom</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="prenom" type="text" class="validate">
+                        <label for="prenom">Prénom</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="new_email" type="email" class="validate">
+                        <label for="new_email" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="new_password" type="password" class="validate">
+                        <label for="new_password">Mot de passe</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="birth" type="text" class="datepicker">
+                        <label for="birth">Date de naissance</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <p>
+                            <input name="sex" type="radio" id="H"/>
+                            <label for="H">Homme</label>
+                        </p>
+                    </div>
+                    <div class="col s4">
+                        <p>
+                            <input name="sex" type="radio" id="F"/>
+                            <label for="F">Femme</label>
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        <input type="submit"
+                               value="{{ 'registration.submit'|trans }}"/>
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+                {{ form_end(form) }}
+
+            </form>
+        </div>
     </div>
-{{ form_end(form) }}
+</div>
+<br>
