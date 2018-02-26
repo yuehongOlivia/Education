@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class AnnuaireController
+class AnnuaireController extends Controller
 {
     /**
      * @Route("/annuaire", name="annuaire_recherche")
