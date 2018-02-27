@@ -26,4 +26,17 @@ class AnnuaireController extends Controller
         return $this->render('annuaire/recherche.html.twig');
 
     }
+
+    /**
+     * @Route("/annuaire", name="annuaire_fiche")
+     * @Method({"GET", "POST"})
+     */
+    public function ficheAction(User $user)
+    {
+        // retourne page user de l'annuaire
+        return $this->render('annuaire/fiche.html.twig', array(
+            'user' => $user
+        ));
+
+    }
 }
