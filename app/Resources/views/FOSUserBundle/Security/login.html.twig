@@ -1,5 +1,5 @@
-{% extends "headerConnexion.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
-{% block fos_user_content_login %}
-    {{ include('@FOSUser/Security/login_content.html.twig') }}
-{% endblock fos_user_content_login %}
+{% block fos_user_content %}
+    {{ include('login_content.html.twig') }}
+{% endblock fos_user_content %}
