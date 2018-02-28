@@ -1,7 +1,7 @@
-{% extends "base.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
 
-{% block content %}
+{% block fos_user_content %}
     <br>
     <div class="section no-pad-bot">
         <div class="row center">
@@ -30,7 +30,8 @@
 
             <div class="col s5">
                 <h5 class="light">Inscription</h5>
-                <form id="myform" action="accueil">
+
+                <form id="myform" action="{{ path('fos_user_registration_register') }}" method="post">
 
                     <div class="row">
                         <div class="input-field col s6">
@@ -76,11 +77,13 @@
                     </div>
                     <br>
                     <div class="center-align">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Créer un compte
+                        <button class="btn waves-effect waves-light">
                             <i class="material-icons right">send</i>
+                            <input type="submit" value="Créer un compte"/>
                         </button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

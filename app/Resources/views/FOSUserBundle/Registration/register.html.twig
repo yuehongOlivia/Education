@@ -1,5 +1,5 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
-{% block fos_user_content_register %}
-{% include "@FOSUser/Registration/register_content.html.twig" %}
-{% endblock fos_user_content_register %}
+{% block fos_user_content %}
+{% include "FOSUserBundle::register_content.html.twig" %}
+{% endblock fos_user_content %}
