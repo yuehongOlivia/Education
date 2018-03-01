@@ -3,16 +3,17 @@
 
 {% block fos_user_content %}
 
-    <br><br><br>
+    <br><br>
     <div class="row center">
         <div class="col s12 m4 l2"></div>
         <div class="col s12 m4 l8">
             <div id="desc" class="container">
                 <h5 class="light">Inscription</h5>
-
+                <br>
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
                 {{ form_widget(form) }}
-                <div>
+                <br>
+                <div class=" waves-effect waves-light btn light">
                     <input type="submit" value="{{ 'registration.submit'|trans }}"/>
                 </div>
                 {{ form_end(form) }}
@@ -21,7 +22,7 @@
         </div>
         <div class="col s12 m4 l2"></div>
     </div>
-    <br><br><br><br><br>
+    <br><br><br><br>
 
 {% endblock fos_user_content %}
 
