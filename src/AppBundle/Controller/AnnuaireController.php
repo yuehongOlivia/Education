@@ -28,14 +28,17 @@ class AnnuaireController extends Controller
     }
 
     /**
-     * @Route("/annuaire", name="annuaire_fiche")
+     * @Route("/annuaire/fiche", name="annuaire_fiche")
      * @Method({"GET", "POST"})
      */
-    public function ficheAction(User $user)
+    public function ficheAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findAll();
+
         // retourne page user de l'annuaire
         return $this->render('annuaire/fiche.html.twig', array(
-            'user' => $user
+            'users' => $users,
         ));
 
     }
