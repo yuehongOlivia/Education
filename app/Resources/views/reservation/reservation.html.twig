@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <br><br><br><br>
+    <h3 class="header light center" id="titre">Réservation des cours</h3>
+    <br><br>
+    <div class="row container">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">filter_list</i>
+                    <table>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/annuaire.js') }}"></script>
+
+{% endblock %}

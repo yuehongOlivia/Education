@@ -41,6 +41,15 @@ class User extends FOSUser
      */
     protected $genre;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Cours", mappedBy="idEns")
+     * Many Users have Many Cours.
+     * @ORM\ManyToMany(targetEntity="Cours", inversedBy="users")
+     * @ORM\JoinTable(name="users_cours")
+     * @ORM\Column(name="cours", type="string")
+     */
+    protected $cours;
+
     public function getNom()
     {
         return $this->nom;
