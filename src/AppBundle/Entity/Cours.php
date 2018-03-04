@@ -59,9 +59,9 @@ class Cours
     private $nombreTotal;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="heure", type="time")
+     * @ORM\Column(name="heure", type="string")
      */
     private $heure;
 
