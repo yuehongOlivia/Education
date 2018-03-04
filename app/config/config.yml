@@ -24,9 +24,7 @@ framework:
     default_locale: '%locale%'
     trusted_hosts: ~
     session:
-        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
-        handler_id: session.handler.native_file
-        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        save_path: null
     fragments: ~
     http_method_override: true
     assets: ~
@@ -75,5 +73,9 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "dylanouanounou@yahoo.fr"
+        address: "hongyue192447@gmail.com"
         sender_name: "Education Email"
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+            validation_groups: [AppBundleRegistration]
