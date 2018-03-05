@@ -9,7 +9,31 @@
 namespace AppBundle\Controller;
 
 
-class UserController
-{
+use AppBundle\Entity\User;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * User controller.
+ *
+ * @Route("user")
+ */
+class UserController extends Controller
+{
+    /**
+     * Finds and displays a etudiant entity.
+     *
+     * @Route("/{id}", name="user_show")
+     * @Method("GET")
+     */
+    public function showAction(User $user)
+    {
+        //$deleteForm = $this->createDeleteForm($user);
+
+        return $this->render('user/show.html.twig', array(
+            'user' => $user
+        ));
+    }
 }
