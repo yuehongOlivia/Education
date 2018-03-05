@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Etudiants list</h1>
-
-    <table>
+    <nav class="nav-extended">
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent light-blue lighten-1">
+                <li class="tab"><a href="{{ path('user_show', {'id': app.user.id}) }}">Données utilisateur</a></li>
+                <li class="tab"><a href="#">Dossier étudiant</a></li>
+                <li class="tab"><a href="#test4">Cours</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <table class="highlight">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Ine</th>
-                <th>Mobile</th>
-                <th>Mailaltern</th>
-                <th>Diplomeencours</th>
-                <th>Departement</th>
-                <th>Adresse</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Numéros INE</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Diplome en cours</th>
+            <th>Departement</th>
+            <th>Adresse</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for etudiant in etudiants %}
