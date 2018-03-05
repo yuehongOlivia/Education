@@ -86,17 +86,6 @@ class Cours
      */
     private $credit;
 
-
-    /**
-     * @var integer
-     *
-     * Many Groups have Many Users.
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="cours")
-     * @ORM\Column(name="etudiant", type="integer")
-     */
-    private $etudiant;
-
-
     /**
      * Get id
      *

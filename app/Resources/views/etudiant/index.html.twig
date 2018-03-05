@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Etudiants list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ine</th>
+                <th>Mobile</th>
+                <th>Mailaltern</th>
+                <th>Diplomeencours</th>
+                <th>Departement</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etudiant in etudiants %}
+            <tr>
+                <td><a href="{{ path('etudiant_show', { 'id': etudiant.id }) }}">{{ etudiant.id }}</a></td>
+                <td>{{ etudiant.iNE }}</td>
+                <td>{{ etudiant.mobile }}</td>
+                <td>{{ etudiant.mailaltern }}</td>
+                <td>{{ etudiant.diplomeEnCours }}</td>
+                <td>{{ etudiant.departement }}</td>
+                <td>{{ etudiant.adresse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('etudiant_show', { 'id': etudiant.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('etudiant_edit', { 'id': etudiant.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('etudiant_new') }}">Create a new etudiant</a>
+        </li>
+    </ul>
+{% endblock %}
