@@ -1,21 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Etudiant edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('etudiant_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <br>
+    <div class="row center">
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l8">
+            <div id="desc" class="container">
+                <h4 class="light">Modifier dossier étudiant</h4>
+                <br>
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <br>
+                <div class=" waves-effect waves-light btn light">
+                    <input type="submit" value="Modifier"/>
+                </div>
+                {{ form_end(edit_form) }}
+                <ul>
+                    <li>
+                        <a href="{{ path('etudiant_index') }}">Retour</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col s12 m4 l2"></div>
+    </div>
 {% endblock %}

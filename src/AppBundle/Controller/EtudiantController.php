@@ -44,6 +44,10 @@ class EtudiantController extends Controller
         $form = $this->createForm('AppBundle\Form\EtudiantType', $etudiant);
         $form->handleRequest($request);
 
+        // Récupère id utilisateur connecté pour affecter aux infos étudiant
+        $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+        $etudiant->setId($idUser);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($etudiant);
@@ -131,7 +135,6 @@ class EtudiantController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('etudiant_delete', array('id' => $etudiant->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

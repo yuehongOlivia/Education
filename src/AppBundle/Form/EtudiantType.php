@@ -10,7 +10,7 @@ class EtudiantType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('id')->add('iNE')->add('mobile')->add('mailaltern')->add('diplomeEnCours')->add('departement')->add('adresse');
+        $builder->add('iNE')->add('mobile')->add('mailaltern')->add('diplomeEnCours')->add('departement')->add('adresse');
     }/**
  * {@inheritdoc}
  */
