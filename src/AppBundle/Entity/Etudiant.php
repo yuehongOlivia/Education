@@ -196,6 +196,14 @@ class Etudiant
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * Set adresse
      *
      * @param string $adresse

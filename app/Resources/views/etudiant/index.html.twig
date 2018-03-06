@@ -4,54 +4,111 @@
     <nav class="nav-extended">
         <div class="nav-content">
             <ul class="tabs tabs-transparent light-blue lighten-1">
-                <li class="tab"><a href="{{ path('user_show', {'id': app.user.id}) }}">Données utilisateur</a></li>
-                <li class="tab"><a href="#">Dossier étudiant</a></li>
-                <li class="tab"><a href="#test4">Cours</a></li>
+                <li class="tab"><a href="#etudiant">Dossier étudiant</a></li>
+                <li class="tab"><a href="#utilisateur">Données utilisateur</a></li>
             </ul>
         </div>
     </nav>
-    <br><br>
-    <table class="highlight">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Numéros INE</th>
-            <th>Mobile</th>
-            <th>Email</th>
-            <th>Diplome en cours</th>
-            <th>Departement</th>
-            <th>Adresse</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for etudiant in etudiants %}
-            <tr>
-                <td><a href="{{ path('etudiant_show', { 'id': etudiant.id }) }}">{{ etudiant.id }}</a></td>
-                <td>{{ etudiant.iNE }}</td>
-                <td>{{ etudiant.mobile }}</td>
-                <td>{{ etudiant.mailaltern }}</td>
-                <td>{{ etudiant.diplomeEnCours }}</td>
-                <td>{{ etudiant.departement }}</td>
-                <td>{{ etudiant.adresse }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('etudiant_show', { 'id': etudiant.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('etudiant_edit', { 'id': etudiant.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('etudiant_new') }}">Create a new etudiant</a>
-        </li>
-    </ul>
+    <div id="etudiant" class="center container">
+        <br>
+        {% for etudiant in etudiants %}
+            {% if etudiant is defined %}
+                <h4 class="light">Année 2017/2018</h4>
+                <br>
+                <table class="center">
+                    <tbody class="center">
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ etudiant.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numéros INE</th>
+                        <td>{{ etudiant.iNE }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile</th>
+                        <td>{{ etudiant.mobile }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email université</th>
+                        <td>{{ etudiant.mailaltern }}</td>
+                    </tr>
+                    <tr>
+                        <th>Diplome en cours</th>
+                        <td>{{ etudiant.diplomeEnCours }}</td>
+                    </tr>
+                    <tr>
+                        <th>Departement</th>
+                        <td>{{ etudiant.departement }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ etudiant.adresse }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <ul>
+                    <li>
+                        <a href="{{ path('etudiant_edit', { 'id': etudiant.id }) }}">Modifier dossier étudiant</a>
+                    </li>
+
+                </ul>
+            {% else %}
+                <ul>
+                    <li>
+                        <a href="{{ path('etudiant_new') }}">Créer profil etudiant</a>
+                    </li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+        <br><br>
+    </div>
+
+    <div id="utilisateur" class="center container">
+        <br>
+        <h4 class="light">Année 2017/2018</h4>
+        <br>
+        <table class="center container">
+            <tbody class="center">
+            <tr>
+                <th>Id</th>
+                <td>{{ app.user.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ app.user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ app.user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{{ app.user.dnaiss }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ app.user.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ app.user.genre }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <ul>
+            <li>
+                <a href="#">Modifier profil</a>
+            </li>
+
+        </ul>
+        <br><br>
+    </div>
 {% endblock %}
