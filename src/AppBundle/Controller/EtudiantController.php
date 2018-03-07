@@ -23,13 +23,21 @@ class EtudiantController extends Controller
      */
     public function indexAction()
     {
+        // Récupere user connecté
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
+
+        // Cherche étudiant lié à mon user
         $em = $this->getDoctrine()->getManager();
+        $etudiant = $em->getRepository('AppBundle:Etudiant')->find($userId);
 
-        $etudiants = $em->getRepository('AppBundle:Etudiant')->findAll();
-
-        return $this->render('etudiant/index.html.twig', array(
-            'etudiants' => $etudiants,
-        ));
+        if ($etudiant == null) { // Etudiant non crée
+            return $this->render('etudiant/index.html.twig');
+        } else {
+            return $this->render('etudiant/index.html.twig', array(
+                'etudiant' => $etudiant,
+            ));
+        }
     }
 
     /**
