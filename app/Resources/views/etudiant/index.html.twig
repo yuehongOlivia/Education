@@ -54,12 +54,8 @@
                         <a class="white-text" href="{{ path('etudiant_edit', { 'id': etudiant.id }) }}">Modifier dossier
                             étudiant</a>
                     </div>
-
                 </ul>
-            {% endif %}
-        {% endfor %}
-        {% for etudiant in etudiants %}
-            {% if etudiant.id == app.user.id %}
+            {% else %}
                 <ul>
                     <li>
                         <a href="{{ path('etudiant_new') }}">Créer profil etudiant</a>
