@@ -1,22 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
-
-    <br><br><br><br>
-    <h3 class="header light center" id="titre">Annuaire de l'université</h3>
+{% block body %}
     <br><br>
-    <div class="row container">
-        <div class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">textsms</i>
-                    <input type="text" id="autocomplete-input" class="autocomplete">
-                    <label for="autocomplete-input">Rechercher un professeur ou un étudiant</label>
-                </div>
-            </div>
+    <h4 class="header light center" id="titre">Fiche Etudiant</h4>
+    <div id="etudiant" class="center container">
+        <br>
+        <table class="center">
+            <tbody class="center">
+            <tr>
+                <th>Numéros INE</th>
+                <td>{{ etudiant.iNE }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ user.genre }}</td>
+            </tr>
+            <tr>
+                <th>Email université</th>
+                <td>{{ etudiant.mailaltern }}</td>
+            </tr>
+            <tr>
+                <th>Diplome en cours</th>
+                <td>{{ etudiant.diplomeEnCours }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ etudiant.departement }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br><br><br>
+        <div class=" waves-effect waves-light btn light">
+            <a class="white-text" href="{{ path('annuaire_recherche') }}">Nouvelle recherche</a>
         </div>
+        <br>
+        <ul>
+            <li>
+                <a href="{{ path('menu') }}">Retour</a>
+            </li>
+        </ul>
     </div>
-    <br><br><br><br>
-    <br><br><br><br>
-    <br><br><br><br>
+    <br>
 {% endblock %}
