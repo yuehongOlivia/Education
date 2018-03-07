@@ -28,7 +28,7 @@ class AnnuaireController extends Controller
     }
 
     /**
-     * @Route("/annuaire", name="annuaire_fiche")
+     * @Route("/annuaire/{id}", name="annuaire_fiche")
      * @Method({"GET", "POST"})
      */
     public function ficheAction(User $user)
