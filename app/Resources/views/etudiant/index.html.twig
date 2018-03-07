@@ -13,7 +13,7 @@
     <div id="etudiant" class="center container">
         <br>
         {% for etudiant in etudiants %}
-            {% if etudiant is defined %}
+            {% if etudiant.id == app.user.id %}
                 <h4 class="light">Année 2017/2018</h4>
                 <br>
                 <table class="center">
@@ -56,7 +56,10 @@
                     </div>
 
                 </ul>
-            {% else %}
+            {% endif %}
+        {% endfor %}
+        {% for etudiant in etudiants %}
+            {% if etudiant.id == app.user.id %}
                 <ul>
                     <li>
                         <a href="{{ path('etudiant_new') }}">Créer profil etudiant</a>
