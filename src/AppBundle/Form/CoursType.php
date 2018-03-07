@@ -13,7 +13,16 @@ class CoursType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomCours')->add('nomEns')->add('idEns')->add('nombreChx')->add('nombreTotal')->add('heure')->add('jour')->add('lieu')->add('credit')->add('etudiant');
+        $builder->add('nomCours')
+            ->add('nomEns')
+            ->add('idEns')
+            ->add('nombreChx')
+            ->add('nombreTotal')
+            ->add('heure')
+            ->add('jour')
+            ->add('lieu')
+            ->add('credit')
+            ->add('etudiant');
     }/**
      * {@inheritdoc}
      */

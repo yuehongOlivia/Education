@@ -18,12 +18,28 @@
         </div>
     </div>
     <br><br><br><br>
-    <br><br><br><br>
-    <br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/annuaire.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { // Lie ma page html avec fonction jquery
+            $('input.autocomplete').autocomplete({
+                data: {
+                    "Apple": null,
+                    "Microsoft": null,
+                    "Google": 'https://placehold.it/250x250'
+                },
+                limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+                onAutocomplete: function (val) {
+                    // Callback function when value is autcompleted.
 
+                },
+                minLength: 1 // The minimum length of the input for the autocomplete to start. Default: 1.
+            });
+
+        });
+    </script>
 {% endblock %}
