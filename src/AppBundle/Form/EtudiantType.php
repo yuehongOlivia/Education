@@ -5,6 +5,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 class EtudiantType extends AbstractType
 {
@@ -14,12 +18,24 @@ class EtudiantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('iNE')
-            ->add('mobile')
-            ->add('mailaltern')
-            ->add('diplomeEnCours')
-            ->add('departement')
-            ->add('adresse');
+            ->add('iNE', TextType::class, array(
+                'label' => 'Numéros INE',
+            ))
+            ->add('mobile', TextType::class, array(
+                'label' => 'Numéros de portable',
+            ))
+            ->add('mailaltern', EmailType::class, array(
+                'label' => 'Mail de l\'université',
+            ))
+            ->add('diplomeEnCours',TextType::class, array(
+                'label' => 'Diplôme en cours',
+            ))
+            ->add('departement', TextType::class, array(
+                'label' => 'Departement UFR',
+            ))
+            ->add('adresse',TextType::class, array(
+                'label' => 'Adresse',
+            ));
     }
 
     /**
