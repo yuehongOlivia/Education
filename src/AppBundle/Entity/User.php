@@ -32,7 +32,7 @@ class User extends FOSUser
 
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="datetime")
      */
     protected $dnaiss;
 

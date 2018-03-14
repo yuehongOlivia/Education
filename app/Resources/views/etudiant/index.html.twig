@@ -18,10 +18,6 @@
             <table class="striped">
                 <tbody>
                 <tr>
-                    <th class="center">Id</th>
-                    <td class="center">{{ etudiant.id }}</td>
-                </tr>
-                <tr>
                     <th class="center">Numéros INE</th>
                     <td class="center">{{ etudiant.iNE }}</td>
                 </tr>
@@ -77,10 +73,6 @@
         <table class="striped">
             <tbody>
             <tr>
-                <th class="center">Id</th>
-                <td class="center">{{ app.user.id }}</td>
-            </tr>
-            <tr>
                 <th class="center">Nom</th>
                 <td class="center">{{ app.user.nom }}</td>
             </tr>
@@ -90,7 +82,7 @@
             </tr>
             <tr>
                 <th class="center">Date de naissance</th>
-                <td class="center">{{ app.user.dnaiss }}</td>
+                <td class="center">{{ app.user.dnaiss |date('d-m-Y')}}</td>
             </tr>
             <tr>
                 <th class="center">Username</th>
