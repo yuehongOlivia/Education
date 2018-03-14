@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 
 class RegistrationType extends AbstractType
 {
@@ -29,7 +28,13 @@ class RegistrationType extends AbstractType
             'format' => 'dd-MM-yyyy',
         ));
 
-        $builder->add('genre');
+        $builder->add('genre', ChoiceType::class, array(
+            'choices' => array(
+                'Femme' => 0,
+                'Homme' => 1,
+            ),
+            'expanded' => true,
+        ));
 
         /**
          * $builder->add('genre', CollectionType::class, array(
