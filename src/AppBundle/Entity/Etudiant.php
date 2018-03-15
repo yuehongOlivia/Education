@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Etudiant
@@ -20,50 +21,61 @@ class Etudiant
      * @ORM\JoinColumn(nullable=false)
      *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INE", type="string", length=11, unique=true)
      */
-    private $iNE;
+    protected $iNE;
 
     /**
      * @var int
      *
      * @ORM\Column(name="mobile", type="integer", unique=true)
      */
-    private $mobile;
+    protected $mobile;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mailaltern", type="string", length=255, unique=true)
      */
-    private $mailaltern;
+    protected $mailaltern;
 
     /**
      * @var string
      *
      * @ORM\Column(name="diplomeEnCours", type="string", length=255)
      */
-    private $diplomeEnCours;
+    protected $diplomeEnCours;
 
     /**
      * @var string
      *
      * @ORM\Column(name="departement", type="string", length=255)
      */
-    private $departement;
+    protected $departement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255)
      */
-    private $adresse;
+    protected $adresse;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Cours", mappedBy="etudiants")
+     */
+    protected $cours;
+
+
+    public function __construct()
+    {
+        $this->cours = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -196,6 +208,14 @@ class Etudiant
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * Set adresse
      *
      * @param string $adresse
@@ -218,5 +238,33 @@ class Etudiant
     {
         return $this->adresse;
     }
+
+    public function addCours(Cours $course)
+    {
+        if ($this->cours->contains($course)) {
+            return;
+        }
+        $this->cours[] = $course;
+    }
+
+    public function removeCours(Cours $course)
+    {
+        if ($this->cours->contains($course))
+        {
+            return $this->cours->removeElement($course);
+        } else {
+            return;
+        }
+    }
+
+    /**
+     * @return ArrayCollection|Cours[]
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+
+
 }
 

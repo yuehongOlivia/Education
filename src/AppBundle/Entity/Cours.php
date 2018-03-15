@@ -81,11 +81,19 @@ class Cours
 
     /**
      * @var float
-     *
      * @ORM\Column(name="credit", type="float")
      */
     private $credit;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Etudiant")
+     */
+    private $etudiants;
+
+    public function __construct()
+    {
+        $this->etudiants = new ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -168,28 +176,6 @@ class Cours
         return $this->idEns;
     }
 
-    /**
-     * Set etudiant
-     *
-     * @param integer $etudiant
-     *
-     * @return Cours
-     */
-    public function setEtudiant($etudiant)
-    {
-        $this->etudiant = $etudiant;
-        return $this;
-    }
-
-    /**
-     * Get etudiant
-     *
-     * @return int
-     */
-    public function getEtudiant()
-    {
-        return $this->etudiant;
-    }
 
     /**
      * Set nombreChx
@@ -334,5 +320,37 @@ class Cours
     {
         return $this->credit;
     }
+
+    public function addEtudiant(Etudiant $student)
+    {
+        if ($this->etudiants->contains($student)) {
+            return;
+        }
+        $this->setNombreChx($this->getNombreChx()+1);
+        $this->setNombreTotal($this->getNombreTotal()-1);
+        $this->etudiants[] = $student;
+
+    }
+
+    public function removeEtudiant(Etudiant $student)
+    {
+        if ($this->etudiants->contains($student))
+        {
+            $this->setNombreChx($this->getNombreChx()-1);
+            $this->setNombreTotal($this->getNombreTotal()+1);
+            return $this->etudiants->removeElement($student);
+        } else {
+            return;
+        }
+    }
+
+    /**
+     * @return ArrayCollection|Cours[]
+     */
+    public function getEtudiants()
+    {
+        return $this->etudiants;
+    }
+
 }
 

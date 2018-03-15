@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cour</h1>
+    <h1>Cours</h1>
 
     <table>
         <tbody>
@@ -45,24 +45,19 @@
                 <th>Credit</th>
                 <td>{{ cour.credit }}</td>
             </tr>
-            <tr>
-                <th>Etudiant</th>
-                <td>{{ cour.etudiant }}</td>
-            </tr>
         </tbody>
     </table>
-
+    <div class=" waves-effect waves-light btn light">
+        <a class="white-text" href="{{ path('cours_reserve', { 'id': cour.id }) }}">Réserver</a>
+    </div>
     <ul>
         <li>
             <a href="{{ path('cours_index') }}">Back to the list</a>
         </li>
-        <li>
-            <a href="{{ path('cours_edit', { 'id': cour.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+
     </ul>
+    <ul>
+    </ul>
+
+
 {% endblock %}

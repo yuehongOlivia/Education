@@ -17,6 +17,7 @@
                 <th>Lieu</th>
                 <th>Credit</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -35,18 +36,17 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('cours_show', { 'id': cour.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('cours_edit', { 'id': cour.id }) }}">edit</a>
+                            <a href="{{ path('cours_show', { 'id': cour.id }) }}">Voir Détail</a>
                         </li>
                     </ul>
+                </td>
+                <td>
+                    <a href="{{ path('cours_list', { 'id': cour.id }) }}">Voir Réservation</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
     <ul>
     </ul>
 {% endblock %}
