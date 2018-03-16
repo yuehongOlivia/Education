@@ -21,8 +21,7 @@ class CoursType extends AbstractType
             ->add('heure')
             ->add('jour')
             ->add('lieu')
-            ->add('credit')
-            ->add('etudiant');
+            ->add('credit');
     }/**
      * {@inheritdoc}
      */

@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Cours;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Cour controller.
@@ -14,13 +15,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class CoursController extends Controller
 {
+
+
     /**
      * Lists all cour entities.
      *
      * @Route("/", name="cours_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -39,20 +42,22 @@ class CoursController extends Controller
      */
     public function newAction(Request $request)
     {
-        $cour = new Cours();
-        $form = $this->createForm('AppBundle\Form\CoursType', $cour);
+        $cours = new Cours();
+        $form = $this->createForm('AppBundle\Form\CoursType', $cours);
         $form->handleRequest($request);
+
+        //$idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($cour);
+            $em->persist($cours);
             $em->flush();
 
-            return $this->redirectToRoute('cours_show', array('id' => $cour->getId()));
+            return $this->render('cours/index.html.twig', array('cour' => $cours));
         }
 
         return $this->render('cours/new.html.twig', array(
-            'cour' => $cour,
+            'cours' => $cours,
             'form' => $form->createView(),
         ));
     }
@@ -61,17 +66,128 @@ class CoursController extends Controller
      * Finds and displays a cour entity.
      *
      * @Route("/{id}", name="cours_show")
+     *
      * @Method("GET")
      */
     public function showAction(Cours $cours)
     {
+        $em = $this->getDoctrine()->getManager();
+        $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
         $deleteForm = $this->createDeleteForm($cours);
+        $etudiant = $em->getRepository('AppBundle\Entity\Etudiant')
+            ->findOneBy(['id' => $idUser]);
 
-        return $this->render('cours/show.html.twig', array(
-            'cour' => $cours,
-            'delete_form' => $deleteForm->createView(),
+        return $this
+            ->render('cours/show.html.twig', array(
+                'cour' => $cours,
+                'etudiant'=>$etudiant,
+                'delete_form' => $deleteForm->createView(),
+            ));
+    }
+
+    /**
+     * Reserver un cours avec ManyToMany.
+     *
+     * @Route("/{id}/reserve", name="cours_reserve")
+     * @Method({"GET", "POST"})
+     */
+    public function reserveAction(Cours $cours)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+
+        $etudiant = $em->getRepository('AppBundle\Entity\Etudiant')
+            ->findOneBy(['id' => $idUser]);
+        $cours->addEtudiant($etudiant);
+        $etudiant->addCours($cours);
+        $em->flush($cours,$etudiant);
+
+        return $this->render('cours/list.html.twig', array(
+            'cour'=>$cours,
+            'etudiant'=>$etudiant,
         ));
     }
+
+    /**
+     * Desincrire un cours avec ManyToMany.
+     *
+     * @Route("/{id}/desinscrire", name="cours_desinscrire")
+     * @Method({"GET", "POST"})
+     */
+    public function desinscrireAction(Cours $cours)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+
+        $etudiant = $em->getRepository('AppBundle\Entity\Etudiant')
+            ->findOneBy(['id' => $idUser]);
+        $cours->removeEtudiant($etudiant);
+        $etudiant->removeCours($cours);
+        $em->flush($cours,$etudiant);
+        return $this->render('cours/list.html.twig', array(
+            'cour'=>$cours,
+            'etudiant'=>$etudiant,
+        ));
+    }
+
+    /**
+     * Desincrire un cours avec ManyToMany.
+     *
+     * @Route("/{id}/list", name="cours_list")
+     * @Method({"GET", "POST"})
+     */
+    public function listAction(Cours $cours)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+
+        $etudiant = $em->getRepository('AppBundle\Entity\Etudiant')
+            ->findOneBy(['id' => $idUser]);
+        $em->flush($cours,$etudiant);
+        return $this->render('cours/list.html.twig', array(
+            'cour'=>$cours,
+            'etudiant'=>$etudiant,
+        ));
+    }
+
+    /*
+        /**
+         * Finds and displays a cour entity.
+         *
+         * @Route("/", name="cours_list")
+         *
+         * @Method({"GET", "POST"})
+         */
+    /*
+        public function listAction(Request $request)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $cours = $em->getRepository('AppBundle:Cours')->findAll();
+            $form = $this->createForm('AppBundle\Form\ReserveCoursType',$cours);
+            $form->handleRequest($request);
+            $options = $form->get('id')->getConfig()->getOptions();
+            $choices = $options['choice_list']->getChoices();
+            $form2 = $form->getdata();
+            var_dump($form2->getid());
+
+
+            $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+            $etudiant= $em->getRepository('AppBundle\Entity\Etudiant')
+                ->findOneBy(['id'=>$idUser]);
+
+
+
+            $etudiant->addCours($choices);
+
+            return $this->render('cours/list.html.twig', array(
+                'cours' => $cours,
+                'form2' => $form->createView()
+            ));
+        }*/
+
 
     /**
      * Displays a form to edit an existing cour entity.
@@ -130,7 +246,6 @@ class CoursController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('cours_delete', array('id' => $cours->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

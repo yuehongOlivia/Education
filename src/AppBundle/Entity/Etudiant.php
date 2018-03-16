@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Etudiant
@@ -63,6 +64,17 @@ class Etudiant
      * @ORM\Column(name="adresse", type="string", length=255)
      */
     private $adresse;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Cours", mappedBy="etudiants")
+     */
+    protected $cours;
+
+
+    public function __construct()
+    {
+        $this->cours = new ArrayCollection();
+    }
 
 
     /**
@@ -226,5 +238,32 @@ class Etudiant
     {
         return $this->adresse;
     }
+
+    public function addCours(Cours $course)
+    {
+        if ($this->cours->contains($course)) {
+            return;
+        }
+        $this->cours[] = $course;
+    }
+
+    public function removeCours(Cours $course)
+    {
+        if ($this->cours->contains($course))
+        {
+            return $this->cours->removeElement($course);
+        } else {
+            return;
+        }
+    }
+
+    /**
+     * @return ArrayCollection|Cours[]
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+
 }
 
