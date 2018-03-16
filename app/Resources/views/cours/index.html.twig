@@ -11,7 +11,7 @@
             </div>
         </div>
         <br><br>
-        <table class="">
+        <table class="container">
         <thead>
         <tr>
             <th>Nom cours</th>
@@ -28,14 +28,14 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{ cour.nomCours }}</td>
-            <td>{{ cour.nomEns }}</td>
-            <td>{{ cour.nombreChx }}</td>
-            <td>{{ cour.nombreTotal }}</td>
-            <td>{{ cour.jour }}</td>
-            <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
-            <td>{{ cour.lieu }}</td>
-            <td>{{ cour.credit }}</td>
+            <td class="center">{{ cour.nomCours }}</td>
+            <td class="center">{{ cour.nomEns }}</td>
+            <td class="center">{{ cour.nombreChx }}</td>
+            <td class="center">{{ cour.nombreTotal }}</td>
+            <td class="center">{{ cour.jour }}</td>
+            <td class="center">{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
+            <td class="center">{{ cour.lieu }}</td>
+            <td class="center">{{ cour.credit }}</td>
             <td>
                 <ul>
                     <li>
