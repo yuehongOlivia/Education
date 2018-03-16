@@ -1,64 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cours</h1>
 
-    <table>
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ cour.id }}</td>
-        </tr>
-        <tr>
-            <th>Nomcours</th>
-            <td>{{ cour.nomCours }}</td>
-        </tr>
-        <tr>
-            <th>Nomens</th>
-            <td>{{ cour.nomEns }}</td>
-        </tr>
-        <tr>
-            <th>Idens</th>
-            <td>{{ cour.idEns }}</td>
-        </tr>
-        <tr>
-            <th>Nombrechx</th>
-            <td>{{ cour.nombreChx }}</td>
-        </tr>
-        <tr>
-            <th>Nombretotal</th>
-            <td>{{ cour.nombreTotal }}</td>
-        </tr>
-        <tr>
-            <th>Heure</th>
-            <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Jour</th>
-            <td>{{ cour.jour }}</td>
-        </tr>
-        <tr>
-            <th>Lieu</th>
-            <td>{{ cour.lieu }}</td>
-        </tr>
-        <tr>
-            <th>Credit</th>
-            <td>{{ cour.credit }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <div class=" waves-effect waves-light btn light">
-        <a class="white-text" href="{{ path('cours_reserve', { 'id': cour.id }) }}">Réserver</a>
+    <div id="cours" class="center container">
+        <br>
+        <h4 class="light">Cours 2017/2018</h4>
+        <br>
+        <table class="striped">
+            <tbody>
+            <tr>
+                <th class="center">Nom cours</th>
+                <td class="center">{{ cour.nomCours }}</td>
+            </tr>
+            <tr>
+                <th class="center">Nom enseignant</th>
+                <td class="center">{{ cour.nomEns }}</td>
+            </tr>
+            <tr>
+                <th class="center">Nombre place réservé</th>
+                <td class="center">{{ cour.nombreChx }}</td>
+            </tr>
+            <tr>
+                <th class="center">Nombre place disponible</th>
+                <td class="center">{{ cour.nombreTotal }}</td>
+            </tr>
+            <tr>
+                <th class="center">Jour</th>
+                <td class="center">{{ cour.jour }}</td>
+            </tr>
+            <tr>
+                <th class="center">Heure</th>
+                <td class="center">{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th class="center">Crédit ECTS</th>
+                <td class="center">{{ cour.credit }}</td>
+            </tr>
+            <tr>
+                <th class="center">Lieu</th>
+                <td class="center">{{ cour.lieu }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <ul class="center">
+            <div class=" waves-effect waves-light btn light">
+                <a class="white-text" href="{{ path('cours_reserve', { 'id': cour.id }) }}">Réserver</a>
+            </div>
+            <br><br>
+            <a href="{{ path('cours_index') }}">Retour</a>
+        </ul>
     </div>
-    <ul>
-        <li>
-            <a href="{{ path('cours_index') }}">Back to the list</a>
-        </li>
-
-    </ul>
-    <ul>
-    </ul>
-
 
 {% endblock %}
 

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Réservation list</h1>
-
-    <table>
+    <br><br><br><br>
+    <h4 class="light center">Mes cours réserver</h4>
+    <br><br><br><br>
+    <table class="container">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Nomcours</th>
             <th>Nomens</th>
             <th>Idens</th>
@@ -20,7 +20,6 @@
         <tbody>
         {% for cour in etudiant.cours %}
             <tr>
-                <td><a href="{{ path('cours_show', {'id': cour.id}) }}">{{ cour.id }}</a></td>
                 <td>{{ cour.nomCours }}</td>
                 <td>{{ cour.nomEns }}</td>
                 <td>{{ cour.idEns }}</td>
@@ -28,22 +27,27 @@
                 <td>{{ cour.jour }}</td>
                 <td>{{ cour.lieu }}</td>
                 <td>{{ cour.credit }}</td>
-                <td><ul>
+                <td>
+                    <ul>
                         <li>
                             <div>
                                 <a href="{{ path('cours_desinscrire', { 'id': cour.id }) }}">désinscrire</a>
                             </div>
                         </li>
-                    </ul></td>
+                    </ul>
+                </td>
 
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br>
 
-    <a href="{{ path('cours_index') }}">Revenir sur la liste de cours</a>
-
-    <ul>
-    </ul>
-
+    <div class="row center">
+        <div class="waves-effect waves-light btn light">
+            <a class="white-text" href="{{ path('cours_index') }}">Revenir sur la liste de cours</a>
+        </div>
+    </div>
+    <br><br>
 {% endblock %}

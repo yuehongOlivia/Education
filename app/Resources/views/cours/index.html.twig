@@ -1,52 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cours list</h1>
-
-    <table>
+    <br><br>
+    <h4 class="light center">Liste de cours 2017/2018</h4>
+    <br><br>
+    {% for cour in cours %}
+        <div class="row center">
+            <div class="waves-effect waves-light btn light">
+                <a class="white-text" href="{{ path('cours_list', { 'id': cour.id }) }}">Mes réservations</a>
+            </div>
+        </div>
+        <br><br>
+        <table class="">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Nomcours</th>
-            <th>Nomens</th>
-            <th>Idens</th>
-            <th>Nombrechx</th>
-            <th>Nombretotal</th>
-            <th>Heure</th>
+            <th>Nom cours</th>
+            <th>Nom enseignant</th>
+            <th>Nombre place réservé</th>
+            <th>Nombre place disponible</th>
             <th>Jour</th>
+            <th>Heure</th>
             <th>Lieu</th>
-            <th>Credit</th>
+            <th>Crédit ECTS</th>
             <th>Actions</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        {% for cour in cours %}
-            <tr>
-                <td><a href="{{ path('cours_show', { 'id': cour.id }) }}">{{ cour.id }}</a></td>
-                <td>{{ cour.nomCours }}</td>
-                <td>{{ cour.nomEns }}</td>
-                <td>{{ cour.idEns }}</td>
-                <td>{{ cour.nombreChx }}</td>
-                <td>{{ cour.nombreTotal }}</td>
-                <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
-                <td>{{ cour.jour }}</td>
-                <td>{{ cour.lieu }}</td>
-                <td>{{ cour.credit }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('cours_show', { 'id': cour.id }) }}">Voir Détail</a>
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                    <a href="{{ path('cours_list', { 'id': cour.id }) }}">Voir Réservation</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
+        <tr>
+            <td>{{ cour.nomCours }}</td>
+            <td>{{ cour.nomEns }}</td>
+            <td>{{ cour.nombreChx }}</td>
+            <td>{{ cour.nombreTotal }}</td>
+            <td>{{ cour.jour }}</td>
+            <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
+            <td>{{ cour.lieu }}</td>
+            <td>{{ cour.credit }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('cours_show', { 'id': cour.id }) }}">Réserver</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
     </table>
-    <ul>
-    </ul>
+    <br><br><br><br><br>
+    <br><br><br><br><br><br>
 {% endblock %}
