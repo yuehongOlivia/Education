@@ -1,7 +1,5 @@
-{% extends 'base.html.twig' %}
-
 {% block body %}
-    <h1>Cours list</h1>
+    <h1>Réservation list</h1>
 
     <table>
         <thead>
@@ -10,43 +8,40 @@
             <th>Nomcours</th>
             <th>Nomens</th>
             <th>Idens</th>
-            <th>Nombrechx</th>
-            <th>Nombretotal</th>
             <th>Heure</th>
             <th>Jour</th>
             <th>Lieu</th>
             <th>Credit</th>
-            <th>Actions</th>
-            <th></th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        {% for cour in cours %}
+        {% for cour in etudiant.cours %}
             <tr>
-                <td><a href="{{ path('cours_show', { 'id': cour.id }) }}">{{ cour.id }}</a></td>
+                <td><a href="{{ path('cours_show', {'id': cour.id}) }}">{{ cour.id }}</a></td>
                 <td>{{ cour.nomCours }}</td>
                 <td>{{ cour.nomEns }}</td>
                 <td>{{ cour.idEns }}</td>
-                <td>{{ cour.nombreChx }}</td>
-                <td>{{ cour.nombreTotal }}</td>
                 <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
                 <td>{{ cour.jour }}</td>
                 <td>{{ cour.lieu }}</td>
                 <td>{{ cour.credit }}</td>
-                <td>
-                    <ul>
+                <td><ul>
                         <li>
-                            <a href="{{ path('cours_show', { 'id': cour.id }) }}">Voir Détail</a>
+                            <div>
+                                <a href="{{ path('cours_desinscrire', { 'id': cour.id }) }}">désinscrire</a>
+                            </div>
                         </li>
-                    </ul>
-                </td>
-                <td>
-                    <a href="{{ path('cours_list', { 'id': cour.id }) }}">Voir Réservation</a>
-                </td>
+                    </ul></td>
+
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('cours_index') }}">Revenir sur la liste de cours</a>
+
     <ul>
     </ul>
+
 {% endblock %}

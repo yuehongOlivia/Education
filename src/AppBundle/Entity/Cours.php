@@ -81,9 +81,11 @@ class Cours
 
     /**
      * @var float
+     *
      * @ORM\Column(name="credit", type="float")
      */
     private $credit;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="Etudiant")
@@ -94,6 +96,7 @@ class Cours
     {
         $this->etudiants = new ArrayCollection();
     }
+
     /**
      * Get id
      *
@@ -176,6 +179,28 @@ class Cours
         return $this->idEns;
     }
 
+    /**
+     * Set etudiant
+     *
+     * @param integer $etudiant
+     *
+     * @return Cours
+     */
+    public function setEtudiant($etudiant)
+    {
+        $this->etudiant = $etudiant;
+        return $this;
+    }
+
+    /**
+     * Get etudiant
+     *
+     * @return int
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
 
     /**
      * Set nombreChx
@@ -351,6 +376,5 @@ class Cours
     {
         return $this->etudiants;
     }
-
 }
 

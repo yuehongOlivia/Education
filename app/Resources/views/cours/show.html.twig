@@ -5,46 +5,46 @@
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cour.id }}</td>
-            </tr>
-            <tr>
-                <th>Nomcours</th>
-                <td>{{ cour.nomCours }}</td>
-            </tr>
-            <tr>
-                <th>Nomens</th>
-                <td>{{ cour.nomEns }}</td>
-            </tr>
-            <tr>
-                <th>Idens</th>
-                <td>{{ cour.idEns }}</td>
-            </tr>
-            <tr>
-                <th>Nombrechx</th>
-                <td>{{ cour.nombreChx }}</td>
-            </tr>
-            <tr>
-                <th>Nombretotal</th>
-                <td>{{ cour.nombreTotal }}</td>
-            </tr>
-            <tr>
-                <th>Heure</th>
-                <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Jour</th>
-                <td>{{ cour.jour }}</td>
-            </tr>
-            <tr>
-                <th>Lieu</th>
-                <td>{{ cour.lieu }}</td>
-            </tr>
-            <tr>
-                <th>Credit</th>
-                <td>{{ cour.credit }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ cour.id }}</td>
+        </tr>
+        <tr>
+            <th>Nomcours</th>
+            <td>{{ cour.nomCours }}</td>
+        </tr>
+        <tr>
+            <th>Nomens</th>
+            <td>{{ cour.nomEns }}</td>
+        </tr>
+        <tr>
+            <th>Idens</th>
+            <td>{{ cour.idEns }}</td>
+        </tr>
+        <tr>
+            <th>Nombrechx</th>
+            <td>{{ cour.nombreChx }}</td>
+        </tr>
+        <tr>
+            <th>Nombretotal</th>
+            <td>{{ cour.nombreTotal }}</td>
+        </tr>
+        <tr>
+            <th>Heure</th>
+            <td>{% if cour.heure %}{{ cour.heure|date('H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Jour</th>
+            <td>{{ cour.jour }}</td>
+        </tr>
+        <tr>
+            <th>Lieu</th>
+            <td>{{ cour.lieu }}</td>
+        </tr>
+        <tr>
+            <th>Credit</th>
+            <td>{{ cour.credit }}</td>
+        </tr>
         </tbody>
     </table>
     <div class=" waves-effect waves-light btn light">
@@ -61,3 +61,4 @@
 
 
 {% endblock %}
+

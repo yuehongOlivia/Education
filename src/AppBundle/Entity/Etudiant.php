@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Etudiant
@@ -21,50 +20,49 @@ class Etudiant
      * @ORM\JoinColumn(nullable=false)
      *
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="INE", type="string", length=11, unique=true)
      */
-    protected $iNE;
+    private $iNE;
 
     /**
      * @var int
      *
      * @ORM\Column(name="mobile", type="integer", unique=true)
      */
-    protected $mobile;
+    private $mobile;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mailaltern", type="string", length=255, unique=true)
      */
-    protected $mailaltern;
+    private $mailaltern;
 
     /**
      * @var string
      *
      * @ORM\Column(name="diplomeEnCours", type="string", length=255)
      */
-    protected $diplomeEnCours;
+    private $diplomeEnCours;
 
     /**
      * @var string
      *
      * @ORM\Column(name="departement", type="string", length=255)
      */
-    protected $departement;
+    private $departement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255)
      */
-    protected $adresse;
-
+    private $adresse;
 
     /**
      * @ORM\ManyToMany(targetEntity="Cours", mappedBy="etudiants")
@@ -76,6 +74,7 @@ class Etudiant
     {
         $this->cours = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -264,7 +263,6 @@ class Etudiant
     {
         return $this->cours;
     }
-
 
 }
 
