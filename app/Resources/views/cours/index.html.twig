@@ -5,11 +5,7 @@
     <h4 class="light center">Liste de cours 2017/2018</h4>
     <br><br>
     {% for cour in cours %}
-        <div class="row center">
-            <div class="waves-effect waves-light btn light">
-                <a class="white-text" href="{{ path('cours_list', { 'id': cour.id }) }}">Mes réservations</a>
-            </div>
-        </div>
+
         <br><br>
         <table class="container">
         <thead>
@@ -44,9 +40,15 @@
                 </ul>
             </td>
         </tr>
-    {% endfor %}
     </tbody>
     </table>
+    <div class="row center">
+        <div class="waves-effect waves-light btn light">
+            <a class="white-text" href="{{ path('cours_list', { 'id': cour.id }) }}">Mes réservations</a>
+        </div>
+    </div>
+    {% endfor %}
+
     <br><br><br><br><br>
     <br><br><br><br><br><br>
 {% endblock %}
