@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br><br>
+    <h4 class="light center">Liste des question</h4>
+    <br><br>
+
+    <br><br>
+    <table class="container">
+        <thead>
+        <tr>
+            <th class="center">Titre</th>
+            <th class="center">Categorie</th>
+            <th class="center">Contenu</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td class="center">{{ question.titre }}</a>
+                </td>
+                <td class="center">{{ question.categorie }}</td>
+                <td class="center">{{ question.contenu }}</td>
+                <td class="center">
+                    <ul>
+                        <li>
+                            <a href="{{ path('question_show', { 'id': question.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('question_edit', { 'id': question.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="center">
+        <li>
+            <a href="{{ path('question_new') }}">Créer une nouvelle question</a>
+        </li>
+    </ul>
+    <br><br><br><br><br>
+    <br><br><br><br><br><br>
+
+{% endblock %}

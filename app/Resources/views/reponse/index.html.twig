@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br><br><br><br><br>
+    <h4 class="light center">Liste des réponses</h4>
+    <br><br><br><br>
+
+    <br><br>
+    <table class="container">
+        <thead>
+        <tr>
+
+            <th class="center">Resultat</th>
+            <th class="center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+            <tr>
+
+                <td class="center">{{ reponse.resultat }}</td>
+                <td class="center">
+                    <ul>
+                        <li>
+                            <a href="{{ path('reponse_show', { 'id': reponse.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reponse_edit', { 'id': reponse.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br><br><br><br>
+    <ul class="center">
+        <li>
+            <a href="{{ path('reponse_new') }}">Ajouter une réponse</a>
+        </li>
+    </ul>
+    <br><br><br><br><br><br>
+{% endblock %}

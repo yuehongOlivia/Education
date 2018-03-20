@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="cours" class="center container">
+        <br><br><br><br>
+        <h4 class="light">Question</h4>
+        <br>
+
+        <div class="waves-effect waves-light btn light">
+            <a class="white-text" href="{{ path('reponse_new',{'question':question.id }) }}">Répondre à cette
+                question</a>
+        </div>
+        <br><br><br><br>
+
+        <table class="striped">
+            <tbody>
+
+            <tr>
+                <th class="center">Categorie</th>
+                <td class="center">{{ question.categorie }}</td>
+            </tr>
+            <tr>
+                <th class="center">Titre</th>
+                <td class="center">{{ question.titre }}</td>
+            </tr>
+            <tr>
+                <th class="center">Contenu</th>
+                <td class="center">{{ question.contenu }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br><br>
+        {% for reponse in question.reponse %}
+            <h4 class="light">Réponses</h4>
+            <div class="section no-pad-bot">
+                <div class='card horizontal'>
+                    <div class='card-stacked'>
+                        <div class='card-content'>
+                            <p class='corps'>{{ reponse.resultat }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <br><br>
+        <ul>
+            <!--
+            <li>
+                {{ form_start(delete_form) }}
+                <div class=" waves-effect waves-light btn light">
+                    <input type="submit" value="Supprimer">
+                </div>
+                {{ form_end(delete_form) }}
+            </li>
+            -->
+            <li>
+                <a href="{{ path('question_index') }}">Retour</a>
+            </li>
+        </ul>
+    </div>
+    <br><br>
+{% endblock %}

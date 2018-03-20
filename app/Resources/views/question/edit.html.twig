@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br><br><br><br><br>
+    <div class="row center">
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l8">
+            <div id="desc" class="container">
+                <h5 class="light">Modification question</h5>
+                <br>
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <br>
+                <div class=" waves-effect waves-light btn light">
+                    <input type="submit" value="Modifier"/>
+                </div>
+
+                {{ form_end(edit_form) }}
+
+            </div>
+        </div>
+        <div class="col s12 m4 l2"></div>
+    </div>
+    <ul class="center">
+        <li>
+            <a href="{{ path('question_index') }}">Retour</a>
+        </li>
+    </ul>
+    <br><br><br><br><br><br>
+
+{% endblock %}
