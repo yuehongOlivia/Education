@@ -1,11 +1,16 @@
 <?php
 
 namespace AppBundle\Controller;
-
+use AppBundle\Entity\Question;
+use AppBundle\Entity\Reponse;
 use AppBundle\Entity\User;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -21,7 +26,6 @@ class DefaultController extends Controller
         ]);
 
     }
-
     /**
      * @Route("/menu", name="menu")
      *

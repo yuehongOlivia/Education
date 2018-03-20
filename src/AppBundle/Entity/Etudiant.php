@@ -227,4 +227,3 @@ class Etudiant
         return $this->adresse;
     }
 }
-

@@ -1,0 +1,63 @@
+{% block body %}
+
+    <h1>liste des réponses</h1>
+
+
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Id</th>
+
+            <th>titreQuestion</th>
+
+
+            <th>Résultat</th>
+
+            <th>Action</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for reponse in question.reponse %}
+
+            <tr>
+
+                <td><a href="{{ path('reponse_show', {'id': reponse.id}) }}">{{ reponse.id }}</a></td>
+
+                <td>{{ reponse.question }}</td>
+
+                <td>{{ reponse.resultat }}</td>
+
+
+
+
+
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+
+    <a href="{{ path('reponse_index') }}">Revenir sur la liste de cours</a>
+
+
+
+    <ul>
+
+    </ul>
+
+
+
+{% endblock %}
