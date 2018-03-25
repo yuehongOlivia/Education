@@ -46,14 +46,12 @@ class CoursController extends Controller
         $form = $this->createForm('AppBundle\Form\CoursType', $cours);
         $form->handleRequest($request);
 
-        //$idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cours);
             $em->flush();
 
-            return $this->render('cours/index.html.twig', array('cour' => $cours));
+            return $this->render('cours/index.html.twig', array('cours' => $cours));
         }
 
         return $this->render('cours/new.html.twig', array(
@@ -80,7 +78,7 @@ class CoursController extends Controller
         return $this
             ->render('cours/show.html.twig', array(
                 'cour' => $cours,
-                'etudiant'=>$etudiant,
+                'etudiant' => $etudiant,
                 'delete_form' => $deleteForm->createView(),
             ));
     }
@@ -101,11 +99,11 @@ class CoursController extends Controller
             ->findOneBy(['id' => $idUser]);
         $cours->addEtudiant($etudiant);
         $etudiant->addCours($cours);
-        $em->flush($cours,$etudiant);
+        $em->flush($cours, $etudiant);
 
         return $this->render('cours/list.html.twig', array(
-            'cour'=>$cours,
-            'etudiant'=>$etudiant,
+            'cour' => $cours,
+            'etudiant' => $etudiant,
         ));
     }
 
@@ -125,10 +123,10 @@ class CoursController extends Controller
             ->findOneBy(['id' => $idUser]);
         $cours->removeEtudiant($etudiant);
         $etudiant->removeCours($cours);
-        $em->flush($cours,$etudiant);
+        $em->flush($cours, $etudiant);
         return $this->render('cours/list.html.twig', array(
-            'cour'=>$cours,
-            'etudiant'=>$etudiant,
+            'cour' => $cours,
+            'etudiant' => $etudiant,
         ));
     }
 
@@ -146,48 +144,12 @@ class CoursController extends Controller
 
         $etudiant = $em->getRepository('AppBundle\Entity\Etudiant')
             ->findOneBy(['id' => $idUser]);
-        $em->flush($cours,$etudiant);
+        $em->flush($cours, $etudiant);
         return $this->render('cours/list.html.twig', array(
-            'cour'=>$cours,
-            'etudiant'=>$etudiant,
+            'cour' => $cours,
+            'etudiant' => $etudiant,
         ));
     }
-
-    /*
-        /**
-         * Finds and displays a cour entity.
-         *
-         * @Route("/", name="cours_list")
-         *
-         * @Method({"GET", "POST"})
-         */
-    /*
-        public function listAction(Request $request)
-        {
-            $em = $this->getDoctrine()->getManager();
-            $cours = $em->getRepository('AppBundle:Cours')->findAll();
-            $form = $this->createForm('AppBundle\Form\ReserveCoursType',$cours);
-            $form->handleRequest($request);
-            $options = $form->get('id')->getConfig()->getOptions();
-            $choices = $options['choice_list']->getChoices();
-            $form2 = $form->getdata();
-            var_dump($form2->getid());
-
-
-            $idUser = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
-            $etudiant= $em->getRepository('AppBundle\Entity\Etudiant')
-                ->findOneBy(['id'=>$idUser]);
-
-
-
-            $etudiant->addCours($choices);
-
-            return $this->render('cours/list.html.twig', array(
-                'cours' => $cours,
-                'form2' => $form->createView()
-            ));
-        }*/
-
 
     /**
      * Displays a form to edit an existing cour entity.

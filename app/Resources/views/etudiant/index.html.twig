@@ -83,10 +83,10 @@
             </tr>
             <tr>
                 <th class="center">Date de naissance</th>
-                <td class="center">{{ app.user.dnaiss |date('d-m-Y')}}</td>
+                <td class="center">{{ app.user.dnaiss |date('d-m-Y') }}</td>
             </tr>
             <tr>
-                <th class="center">Username</th>
+                <th class="center">Nom d'utilisateur</th>
                 <td class="center">{{ app.user.username }}</td>
             </tr>
             <tr>
@@ -95,7 +95,11 @@
             </tr>
             <tr>
                 <th class="center">Genre</th>
-                <td class="center">{{ app.user.genre }}</td>
+                {% if app.user.genre == 0 %}
+                    <td class="center">Femme</td>
+                {% else %}
+                    <td class="center">Homme</td>
+                {% endif %}
             </tr>
             </tbody>
         </table>

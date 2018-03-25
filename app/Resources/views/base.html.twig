@@ -19,30 +19,32 @@
 <body>
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper">
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col s2">
+                    <a id="logo" href="{{ path('menu') }}" class="valign-wrapper">
+                        <img src="{{ asset('ent.png') }}" alt="logo"
+                             style="height: 60px; width: 100px; margin-left: 0px" class="responsive-img container">
+                    </a>
+                </div>
                 <div class="row">
-                    <div class="col s2">
-                        <a id="logo" href="{{ path('menu') }}"  class="valign-wrapper">
-                            <img src="{{ asset('logo.png') }}" alt="" class="responsive-img container">
-                        </a>
-                    </div>
-                    <div class="row">
-                        <h5 class="center-align col s8 l8">Bienvenue {{ app.user.username }} !</h5>
+                    <h5 class="center-align col s8 l8">Bienvenue {{ app.user.username }} !</h5>
 
-                        <a href="{{ path('fos_user_security_logout') }}" class=" waves-effect waves-light btn light">Se
-                            Deconnecter</a>
-                    </div>
+                    <a href="{{ path('fos_user_security_logout') }}" class=" waves-effect waves-light btn light">Se
+                        Deconnecter</a>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 {% else %}
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper">
             <div class="row">
                 <div class="col s2">
                     <a id="logo" href="{{ path('accueil') }}" class="valign-wrapper">
-                        <img src="{{ asset('logo.png') }}" alt="" class="responsive-img container">
+                        <img src="{{ asset('ent.png') }}" alt="logo"
+                             style="height: 60px; width: 100px; margin-left: 0px" class="responsive-img container">
                     </a>
                 </div>
                 <div class="row">
@@ -65,7 +67,7 @@
 {% block footer %}
     <footer class="page-footer orange">
         <div class="center-align">
-            Made by <a class="orange-text text-lighten-3" href="{{ path('accueil') }}">MB Pierre</a>
+            Made by <a class="orange-text text-lighten-3">Yue - Zhuoqi - Pierre</a>
         </div>
     </footer>
 {% endblock %}

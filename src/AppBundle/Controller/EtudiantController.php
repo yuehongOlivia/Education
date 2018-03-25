@@ -61,7 +61,7 @@ class EtudiantController extends Controller
             $em->persist($etudiant);
             $em->flush();
 
-            return $this->redirectToRoute('etudiant_show', array('id' => $etudiant->getId()));
+            return $this->redirectToRoute('menu', array('id' => $etudiant->getId()));
         }
 
         return $this->render('etudiant/new.html.twig', array(
